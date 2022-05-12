@@ -21,9 +21,16 @@ function Footer({ copyrightHolder = "Company Name" }: Props): JSX.Element {
   }).nodes;
   const year = new Date().getFullYear();
 
+  const { useQuery } = client;
+  const address = useQuery().themeGeneralSettings?.generalThemeSettings?.address;
+  const emailAddress = useQuery().themeGeneralSettings?.generalThemeSettings?.emailAddress;
+  const phone1 = useQuery().themeGeneralSettings?.generalThemeSettings?.phone1;
+  const phone2 = useQuery().themeGeneralSettings?.generalThemeSettings?.phone2;
+  const socialMediaList = useQuery().themeGeneralSettings?.generalThemeSettings?.socialMediaList;
+
   return (
     <footer
-      className={`${styles.main} ${styles.mainfooter}`}
+      className={`${styles.main} ${styles.mainfooter} ${router.asPath == "/contact" ? 'd-none' : ""}`}
       style={{
         backgroundImage:
           "url(https://myriadsolutionz.com/wp-content/uploads/2020/02/footer.webp)",
@@ -42,31 +49,33 @@ function Footer({ copyrightHolder = "Company Name" }: Props): JSX.Element {
                 />
               </a>
             </Link>
+            {address || emailAddress || phone1 || phone2  ? (
             <ul className={styles.companyinfo}>
-              <li>
+              {address ? (<li>
                 <Link href="/">
                   <a>
                     <i className="fas fa-map-marker-alt"></i>
-                    B-103 Time Square Building, Opp. Iscon Arcade, C.G. Road,
-                    Ahmedabad - 380009 India
+                    {address}
                   </a>
                 </Link>
-              </li>
-              <li>
-                <Link href="mailto:info@myriadsolutionz.com">
+              </li>):""}
+              {emailAddress ? (<li>
+                <Link href={`mailto:${emailAddress}`}>
                   <a>
-                    <i className="far fa-envelope"></i>info@myriadsolutionz.com
+                    <i className="far fa-envelope"></i>{emailAddress}
                   </a>
                 </Link>
-              </li>
-              <li>
-                <Link href="tel:917984205622">
+              </li>):""}
+              {phone1 ? (<li>
+                <Link href={`tel:+${phone1.replace(/-|\s/g,"")}`}>
                   <a>
-                    <i className="fas fa-headset"></i>+91-798 420 5622
+                    <i className="fas fa-headset"></i>+{phone1}
                   </a>
                 </Link>
-              </li>
+              </li>):""}
             </ul>
+            ):""
+}
           </div>
           <div className={`${styles.footercoltwo} col`}>
             <Heading level={"h3"} className={styles.footercoltitle}>
@@ -133,29 +142,19 @@ function Footer({ copyrightHolder = "Company Name" }: Props): JSX.Element {
         <div className={`${styles.footerbottom} container`}>
           <div className="row d-flex justify-space align-center">
             <div className="col">
+              {socialMediaList ? (
               <ul className={styles.socialmedia}>
-                <li>
-                  <Link href="https://www.facebook.com/myriadsol">
-                    <a className={styles.facebook} target="_blank">
-                      <i className="fab fa-facebook-f"></i>
+                {socialMediaList.map((link,index) => (
+                <li key={index}>
+                  <Link href={String(link.socialLink)}>
+                    <a className={styles[link.socialName]} target="_blank">
+                    <i className={link.socialIcon}></i>
                     </a>
                   </Link>
                 </li>
-                <li>
-                  <Link href="https://www.instagram.com/myriadsolutionz">
-                    <a className={styles.insta} target="_blank">
-                      <i className="fab fa-instagram"></i>
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="https://in.linkedin.com/company/myriad-solutionz">
-                    <a className={styles.linkedin} target="_blank">
-                      <i className="fab fa-linkedin"></i>
-                    </a>
-                  </Link>
-                </li>
+                ))}
               </ul>
+              ): ""}
             </div>
             <div className="col">
               <ul className={`${styles.footermenulink} d-flex`}>

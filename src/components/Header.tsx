@@ -16,6 +16,7 @@ function Header({
 }: Props): JSX.Element {
   const { menuItems } = client.useQuery();
   const links = menuItems({
+    first:20,
     where: { location: MenuLocationEnum.PRIMARY },
   });
 

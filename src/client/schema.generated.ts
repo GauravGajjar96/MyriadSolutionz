@@ -5352,6 +5352,20 @@ export const generatedSchema = {
     layoutColorOption: { __type: "String" },
     manageSpacing: { __type: "String" },
   },
+  Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection: {
+    __typename: { __type: "String!" },
+    fieldGroupName: { __type: "String" },
+    positionsList: {
+      __type:
+        "[Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList]",
+    },
+  },
+  Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList: {
+    __typename: { __type: "String!" },
+    fieldGroupName: { __type: "String" },
+    positionDescription: { __type: "String" },
+    positionTitle: { __type: "String" },
+  },
   Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection: {
     __typename: { __type: "String!" },
     chooseUsPoints: {
@@ -5371,6 +5385,14 @@ export const generatedSchema = {
     fieldGroupName: { __type: "String" },
     heading: { __type: "String" },
     icon: { __type: "String" },
+  },
+  Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection: {
+    __typename: { __type: "String!" },
+    description: { __type: "String" },
+    fieldGroupName: { __type: "String" },
+    heading: { __type: "String" },
+    headingTag: { __type: "String" },
+    image: { __type: "MediaItem" },
   },
   Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar: {
     __typename: { __type: "String!" },
@@ -7252,6 +7274,9 @@ export const generatedSchema = {
   ThemeGeneralSettings_Generalthemesettings_socialMediaList: {
     __typename: { __type: "String!" },
     fieldGroupName: { __type: "String" },
+    socialIcon: { __type: "String" },
+    socialLink: { __type: "String" },
+    socialName: { __type: "String" },
   },
   UniformResourceIdentifiable: {
     __typename: { __type: "String!" },
@@ -8329,8 +8354,11 @@ export const generatedSchema = {
     AcfFieldGroup: [
       "Page_Fieldlayoutoptions",
       "Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo",
+      "Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection",
+      "Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList",
       "Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection",
       "Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection_chooseUsPoints",
+      "Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection",
       "Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar",
       "Page_Fieldlayoutoptions_FlexibleLayouts_Expertise",
       "Page_Fieldlayoutoptions_FlexibleLayouts_Expertise_expertiseList",
@@ -8353,7 +8381,9 @@ export const generatedSchema = {
     ],
     Page_Fieldlayoutoptions_FlexibleLayouts: [
       "Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo",
+      "Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection",
       "Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection",
+      "Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection",
       "Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar",
       "Page_Fieldlayoutoptions_FlexibleLayouts_Expertise",
       "Page_Fieldlayoutoptions_FlexibleLayouts_FullWidthCta",
@@ -8380,8 +8410,11 @@ export interface AcfFieldGroup {
   __typename?:
     | "Page_Fieldlayoutoptions"
     | "Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo"
+    | "Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection"
+    | "Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList"
     | "Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection"
     | "Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection_chooseUsPoints"
+    | "Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection"
     | "Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar"
     | "Page_Fieldlayoutoptions_FlexibleLayouts_Expertise"
     | "Page_Fieldlayoutoptions_FlexibleLayouts_Expertise_expertiseList"
@@ -12100,7 +12133,9 @@ export interface Page_Fieldlayoutoptions {
 export interface Page_Fieldlayoutoptions_FlexibleLayouts {
   __typename?:
     | "Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo"
+    | "Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection"
     | "Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection"
+    | "Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection"
     | "Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar"
     | "Page_Fieldlayoutoptions_FlexibleLayouts_Expertise"
     | "Page_Fieldlayoutoptions_FlexibleLayouts_FullWidthCta"
@@ -12130,6 +12165,35 @@ export interface Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo {
   fieldGroupName?: Maybe<ScalarsEnums["String"]>;
   layoutColorOption?: Maybe<ScalarsEnums["String"]>;
   manageSpacing?: Maybe<ScalarsEnums["String"]>;
+}
+
+/**
+ * Group within the flex field
+ */
+export interface Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection {
+  __typename?: "Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection";
+  /**
+   * The name of the ACF Field Group
+   */
+  fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+  positionsList?: Maybe<
+    Array<
+      Maybe<Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList>
+    >
+  >;
+}
+
+/**
+ * Field Group
+ */
+export interface Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList {
+  __typename?: "Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList";
+  /**
+   * The name of the ACF Field Group
+   */
+  fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+  positionDescription?: Maybe<ScalarsEnums["String"]>;
+  positionTitle?: Maybe<ScalarsEnums["String"]>;
 }
 
 /**
@@ -12165,6 +12229,21 @@ export interface Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection_chooseU
   fieldGroupName?: Maybe<ScalarsEnums["String"]>;
   heading?: Maybe<ScalarsEnums["String"]>;
   icon?: Maybe<ScalarsEnums["String"]>;
+}
+
+/**
+ * Group within the flex field
+ */
+export interface Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection {
+  __typename?: "Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection";
+  description?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The name of the ACF Field Group
+   */
+  fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+  heading?: Maybe<ScalarsEnums["String"]>;
+  headingTag?: Maybe<ScalarsEnums["String"]>;
+  image?: Maybe<MediaItem>;
 }
 
 /**
@@ -15622,6 +15701,9 @@ export interface ThemeGeneralSettings_Generalthemesettings_socialMediaList {
    * The name of the ACF Field Group
    */
   fieldGroupName?: Maybe<ScalarsEnums["String"]>;
+  socialIcon?: Maybe<ScalarsEnums["String"]>;
+  socialLink?: Maybe<ScalarsEnums["String"]>;
+  socialName?: Maybe<ScalarsEnums["String"]>;
 }
 
 /**
@@ -16935,8 +17017,11 @@ export interface SchemaObjectTypes {
   PageToRevisionConnectionEdge: PageToRevisionConnectionEdge;
   Page_Fieldlayoutoptions: Page_Fieldlayoutoptions;
   Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo: Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo;
+  Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection: Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection;
+  Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList: Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList;
   Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection: Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection;
   Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection_chooseUsPoints: Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection_chooseUsPoints;
+  Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection: Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection;
   Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar: Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar;
   Page_Fieldlayoutoptions_FlexibleLayouts_Expertise: Page_Fieldlayoutoptions_FlexibleLayouts_Expertise;
   Page_Fieldlayoutoptions_FlexibleLayouts_Expertise_expertiseList: Page_Fieldlayoutoptions_FlexibleLayouts_Expertise_expertiseList;
@@ -17184,8 +17269,11 @@ export type SchemaObjectTypesNames =
   | "PageToRevisionConnectionEdge"
   | "Page_Fieldlayoutoptions"
   | "Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo"
+  | "Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection"
+  | "Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList"
   | "Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection"
   | "Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection_chooseUsPoints"
+  | "Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection"
   | "Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar"
   | "Page_Fieldlayoutoptions_FlexibleLayouts_Expertise"
   | "Page_Fieldlayoutoptions_FlexibleLayouts_Expertise_expertiseList"
@@ -17345,8 +17433,11 @@ export type SchemaObjectTypesNames =
 export interface $AcfFieldGroup {
   Page_Fieldlayoutoptions?: Page_Fieldlayoutoptions;
   Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo?: Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo;
+  Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection?: Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection;
+  Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList?: Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection_positionsList;
   Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection?: Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection;
   Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection_chooseUsPoints?: Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection_chooseUsPoints;
+  Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection?: Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection;
   Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar?: Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar;
   Page_Fieldlayoutoptions_FlexibleLayouts_Expertise?: Page_Fieldlayoutoptions_FlexibleLayouts_Expertise;
   Page_Fieldlayoutoptions_FlexibleLayouts_Expertise_expertiseList?: Page_Fieldlayoutoptions_FlexibleLayouts_Expertise_expertiseList;
@@ -17520,7 +17611,9 @@ export interface $NodeWithTrackbacks {
 
 export interface $Page_Fieldlayoutoptions_FlexibleLayouts {
   Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo?: Page_Fieldlayoutoptions_FlexibleLayouts_AboutInfo;
+  Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection?: Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection;
   Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection?: Page_Fieldlayoutoptions_FlexibleLayouts_ChooseUsSection;
+  Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection?: Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection;
   Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar?: Page_Fieldlayoutoptions_FlexibleLayouts_ContentWithSidebar;
   Page_Fieldlayoutoptions_FlexibleLayouts_Expertise?: Page_Fieldlayoutoptions_FlexibleLayouts_Expertise;
   Page_Fieldlayoutoptions_FlexibleLayouts_FullWidthCta?: Page_Fieldlayoutoptions_FlexibleLayouts_FullWidthCta;

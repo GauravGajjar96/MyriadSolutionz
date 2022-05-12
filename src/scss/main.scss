@@ -261,7 +261,7 @@ header {
       border-radius: 0.25rem;
       li {
         padding: 0;
-        line-height: 1;
+        line-height: 1;display:block;
         a {
           display: block;
           width: 100%;
@@ -272,7 +272,13 @@ header {
           text-align: inherit;
           white-space: nowrap;
           background-color: transparent;
-          border: 0;
+          border: 0;line-height:30px;
+
+          &:hover{
+            color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
+          }
         }
       }
     }
@@ -328,6 +334,15 @@ header {
 .commonButtonOutlined{border: 1px solid #ffffff;
   color: #ffffff;
   background: transparent;}
+  .commonButtonSecondary{background: #D2DFDF;
+    color: #97A4A4;
+    border-color: #D2DFDF;
+  &:hover{
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  }
   .commonButtonIcon {
     padding-left: 60px;
    i{
@@ -423,7 +438,11 @@ header {
   padding: 0;
   width: 100%;
   background: #EFEFEF;
-  text-align: center;
+  text-align: center;display: flex;
+  flex-wrap: wrap;justify-content: center;
+  @media screen and (max-width:768px){
+    display: none;
+  }
 }
 .category-link li {
   margin: 0 20px 0 0;
@@ -435,7 +454,7 @@ header {
   color: #2B2B2B;
   font-weight: 400;
   display: inline-block;
-  padding: 10px 0;
+  padding: 10px 0;line-height: 1.2;
 }
 .category-link li a.active {
   font-weight: 700;

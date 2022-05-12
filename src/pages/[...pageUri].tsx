@@ -10,7 +10,7 @@ import {
   PortfolioSection,
   WeOfferSection,
   SolutionServices,
-  AboutInfo,ChooseUs,ServicesBanner,ContentWithSidebar,FullWidthCTA
+  AboutInfo,ChooseUs,ServicesBanner,ContentWithSidebar,FullWidthCTA,CareersSection,ContactSection
 } from "components";
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
@@ -49,6 +49,8 @@ export function PageComponent({ page }: PageProps) {
         {LayoutOptions.map((Layout, index) => {
           var ComponentsName = Layout.__typename;
           var ComponentsData = Layout.$on[ComponentsName];
+          console.log(ComponentsData);
+
 
           return (
             <div key={index}>
@@ -124,6 +126,20 @@ export function PageComponent({ page }: PageProps) {
               ) : (
                 ""
               )}
+            
+              {ComponentsName ==
+              "Page_Fieldlayoutoptions_FlexibleLayouts_CareersSection" ? (
+                <CareersSection QueryData={ComponentsData} />
+              ) : (
+                ""
+              )}
+              {ComponentsName ==
+              "Page_Fieldlayoutoptions_FlexibleLayouts_ContactSection" ? (
+                <ContactSection QueryData={ComponentsData} />
+              ) : (
+                ""
+              )}
+              
             </div>
           );
         })}

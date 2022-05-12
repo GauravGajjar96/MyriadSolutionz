@@ -4,12 +4,15 @@ import { client } from '../../client';
 import styles from "scss/components/FlexibleComponentStyles/PortfolioSection.module.scss";
 import Link from "next/link";
 import Heading from "components/Heading";
+import { useRouter } from 'next/router';
 
 export default function Page() {	
   const { useQuery,usePosts, useCategory } = client;
   const { generalSettings } = client.useQuery();
   const portfolioItems = useQuery().allPortfolio()?.nodes;
-  
+  const portfolioCategories = useQuery().portfolioCategories()?.nodes;
+  const router= useRouter();
+  const {portfolioCatSlug} = router.query;
   return (
     <>
       <Header
@@ -24,7 +27,14 @@ export default function Page() {
       <Hero title="The web is our playground." bgImage="https://myriadsolutionz.com/wp-content/uploads/2019/10/work.jpg"/>
 
       <main className="content content-single">
-        
+      {portfolioCategories ? (
+          
+          <ul className="category-link">
+             <li><Link href="/portfolio/" key="show_all"><a href="/portfolio/" className={router.pathname == "/portfolio" ? "active" : ""}>Show all</a></Link></li>
+            {portfolioCategories.map((link,index) => (
+            <li><Link href={link.link ?? ""}><a href={link?.link} className={portfolioCatSlug == link.link ? "active" : ""}>{link?.name}</a></Link></li> ))}
+          </ul>
+              ) : "" }
       <section
         className={`${styles.portfoliosection} portfolioSection commonPadding`}
       >

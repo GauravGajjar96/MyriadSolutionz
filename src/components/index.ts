@@ -16,6 +16,8 @@ import ChooseUs from "./FlexibleComponents/ChooseUsSection";
 import ServicesBanner from "./FlexibleComponents/ServicesBannerSection";
 import ContentWithSidebar from "./FlexibleComponents/ContentWithSidebar";
 import FullWidthCTA from "./FlexibleComponents/FullWidthCTA";
+import CareersSection from "./FlexibleComponents/Careers";
+import ContactSection from "./FlexibleComponents/ContactSection";
 
 export {
   CTA,
@@ -33,5 +35,5 @@ export {
   InnerBanner,
   AboutInfo,
   ChooseUs,
-  ServicesBanner,ContentWithSidebar,FullWidthCTA
+  ServicesBanner,ContentWithSidebar,FullWidthCTA,CareersSection,ContactSection
 };

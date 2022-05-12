@@ -10,6 +10,7 @@ interface Props {
   button2Text?: string;
   button2URL?: string;
   children?: React.ReactNode;
+  overlayColor?:string;
 }
 
 function Hero({
@@ -20,16 +21,24 @@ function Hero({
   buttonURL,
   button2Text,
   button2URL,
-  children,
+  children,overlayColor
 }: Props): JSX.Element {
+
+  const getOverlayColor = () => {
+    if (overlayColor) return styles[overlayColor];
+    else return styles.bg_1;
+  };
+
   return (
     <section
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...(id && { id })}
       style={{ backgroundImage: bgImage ? `url(${bgImage})` : 'none' }}
       className={styles.hero}>
+        <div className={`${styles.overlay} ${getOverlayColor()}`}></div>
       <div className={styles.wrap}>
         <h1>{title}</h1>
+        {children ? (
         <div className={styles.intro}>
           <div className={styles.children}>{children}</div>
           {buttonText && buttonURL && (
@@ -46,7 +55,7 @@ function Hero({
               </a>
             </p>
           )}
-        </div>
+        </div> ) :""}
       </div>
     </section>
   );

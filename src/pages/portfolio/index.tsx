@@ -4,11 +4,16 @@ import { client } from '../../client';
 import styles from "scss/components/FlexibleComponentStyles/PortfolioSection.module.scss";
 import Link from "next/link";
 import Heading from "components/Heading";
+import { useRouter } from 'next/router';
+
 
 export default function Page() {	
   const { useQuery,usePosts, useCategory } = client;
   const { generalSettings } = client.useQuery();
   const portfolioItems = useQuery().allPortfolio()?.nodes;
+  const portfolioCategories = useQuery().portfolioCategories()?.nodes;
+  const router= useRouter();
+  const {portfolioCatSlug} = router.query;
   
   return (
     <>
@@ -24,33 +29,14 @@ export default function Page() {
       <Hero title="The web is our playground." bgImage="https://myriadsolutionz.com/wp-content/uploads/2019/10/work.jpg"/>
 
       <main className="content content-single">
+        {portfolioCategories ? (
+          
       <ul className="category-link">
-		<li><a href="https://myriadsolutionz.com/portfolio/" className="">Show all</a></li>
-				<li>
-			<a href="https://myriadsolutionz.com/portfolio_category/content-management-systems/" className="active">
-				CMS			</a>
-		</li>
-				<li>
-			<a href="https://myriadsolutionz.com/portfolio_category/e-commerce/" className="">
-				E-commerce			</a>
-		</li>
-				<li>
-			<a href="https://myriadsolutionz.com/portfolio_category/email-marketing/" className="">
-				Email Marketing			</a>
-		</li>
-				<li>
-			<a href="https://myriadsolutionz.com/portfolio_category/mobile-responsive/" className="">
-				Mobile / Responsive			</a>
-		</li>
-				<li>
-			<a href="https://myriadsolutionz.com/portfolio_category/search-engine-optimization/" className="">
-				SEO			</a>
-		</li>
-				<li>
-			<a href="https://myriadsolutionz.com/portfolio_category/web-development/" className="">
-				Web Development			</a>
-		</li>
+        <li><Link href="/portfolio/" key="show_all"><a href="/portfolio/" className={router.pathname == "/portfolio" ? "active" : ""}>Show all</a></Link></li>
+        {portfolioCategories.map((link,index) => (
+		    <li><Link href={link.link ?? ""} key={index}><a href={link?.link} className={portfolioCatSlug == link.link ? "active" : ""}>{link?.name}</a></Link></li> ))}
 			</ul>
+          ) : "" }
       <section
         className={`${styles.portfoliosection} portfolioSection commonPadding`}
       >

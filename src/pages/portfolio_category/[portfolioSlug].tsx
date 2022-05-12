@@ -16,7 +16,7 @@ export default function Page() {
   const { usePosts, useQuery } = client;
  
   const query = useQuery();
-  console.log(query);
+  // console.log(query);
   const movie = query.portfolioCategory({
     id: String(portfolioSlug),
     idType: PortfolioCategoryIdType.SLUG,
@@ -27,6 +27,7 @@ export default function Page() {
   // console.log(movie?.);
  
   const generalSettings = useQuery().generalSettings;
+  const portfolioCategories = useQuery().portfolioCategories()?.nodes;
  
   return (
     <>
@@ -46,6 +47,14 @@ export default function Page() {
 
 
     <main className="content content-single">
+    {portfolioCategories ? (
+          
+          <ul className="category-link">
+            <li><Link href="/portfolio/" key="show_all"><a href="/portfolio/" className={router.pathname == "/portfolio" ? "active" : ""}>Show all</a></Link></li>
+            {portfolioCategories.map((link,index) => (
+            <li key={index}><Link href={link.link ?? ""}><a href={link?.link} className={portfolioSlug == link.slug ? "active" : ""}>{link?.name}</a></Link></li> ))}
+          </ul>
+              ) : "" }
     <section
         className={`${styles.portfoliosection} portfolioSection commonPadding`}
       >

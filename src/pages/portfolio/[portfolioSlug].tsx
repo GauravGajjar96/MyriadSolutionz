@@ -36,7 +36,7 @@ export default function Page() {
       </title>
     </Head>
 
-    <Hero title={movie?.title()} />
+    <Hero title={movie?.title()} overlayColor="bg_2"/>
 
     <main className="content content-single">
       <h2>{movie?.title()}</h2>
